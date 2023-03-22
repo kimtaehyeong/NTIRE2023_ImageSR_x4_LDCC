@@ -1,35 +1,30 @@
 # [NTIRE 2023 Challenge on Image Super-Resolution (x4)](https://cvlai.net/ntire/2023/) @ [CVPR 2023](https://cvpr2023.thecvf.com/)
 
-## How to test the baseline model?
+## Latent Discriminative Cosine Criterion (LDCC) Overview
+<img src="https://github.com/kimtaehyeong/NTIRE2023_ImageSR_x4_LDCC/blob/main/figures/ldcc_method.PNG" width="600"/>
+
+### Environment
+- [PyTorch >= 1.7](https://pytorch.org/) **(Recommend **NOT** using torch 1.8!!! It would cause abnormal performance.)**
+- [BasicSR == 1.3.4.9](https://github.com/XPixelGroup/BasicSR/blob/master/INSTALL.md) 
+
+### How to test the baseline model?
 
 1. `git clone https://github.com/kimtaehyeong/NTIRE2023_ImageSR_x4.git`
-2. Select the model you would like to test from [`run.sh`](./run.sh)
+2. The models weights should download to ```model_zoo``` directory at [Google Drive](https://drive.google.com/file/d/1UqM1tU09TOFO-E_Y5lQpm5pjXmAdTGC-/view?usp=share_link)
+3. Select the model you would like to test from [`run.sh`](./run.sh)
     ```bash
-    CUDA_VISIBLE_DEVICES=0 python test_demo.py --data_dir [path to your data dir] --save_dir [path to your save dir] --model_id 0 # CUDA_VISIBLE_DEVICES=0 python test_demo.py --data_dir /home/work/NTIRE/dataset/SUB --save_dir ./results_th --model_id 2
-
+    CUDA_VISIBLE_DEVICES=0 python test_demo.py --data_dir [path to your data dir] --save_dir [path to your save dir] --model_id [number]
+    ```
+    for example :
+    ```bash
+     CUDA_VISIBLE_DEVICES=0 python test_demo.py --data_dir /home/work/NTIRE/dataset/SUB --save_dir ./results --model_id 2
     ```
     - Be sure the change the directories `--data_dir` and `--save_dir`.
-    - We provide three baselines (team00): RFDN (default), SwinIR, and CAT. The code and pretrained models of the three models are provided. Three baselines are all test normally with `run.sh`.
+    - This repository is based on a [link](https://github.com/zhengchen1999/NTIRE2023_ImageSR_x4).
+    - We provide a baseline of our model based on [HAT](https://github.com/XPixelGroup/HAT). The code and pretrained models of our models are provided. Our baseline are all test normally with `run.sh`.
 
-## How to add your model to this baseline?
-1. Register your team in the [Google Spreadsheet](https://docs.google.com/spreadsheets/d/1P13yRO-r3bNsB7RdNr5xjPEVPnyLFjBgz8ktuPl9AME/edit?usp=sharing) and get your team ID.
-2. Put your the code of your model in `./models/[Your_Team_ID]_[Your_Model_Name].py`
-   - Please add **only one** file in the folder `./models`. **Please do not add other submodules**.
-   - Please zero pad [Your_Team_ID] into two digits: e.g. 00, 01, 02 
-3. Put the pretrained model in `./model_zoo/[Your_Team_ID]_[Your_Model_Name].[pth or pt or ckpt]`
-   - Please zero pad [Your_Team_ID] into two digits: e.g. 00, 01, 02
-   - Note:  Please provide a download link for the pretrained model, if the file size exceeds **100 MB**. Put the link in `./model_zoo/[Your_Team_ID]_[Your_Model_Name].txt`: e.g. [team00_cat.txt](https://github.com/zhengchen1999/NTIRE2023_ImageSR_x4/blob/main/model_zoo/team00_cat.txt)
-4. Add your model to the model loader `./test_demo/select_model` as follows:
-    ```python
-        elif model_id == [Your_Team_ID]:
-            # define your model and load the checkpoint
-    ```
-   - Note: Please set the correct data_range, either 255.0 or 1.0
-5. Send us the command to download your code, e.g, 
-   - `git clone [Your repository link]`
-   - We will do the following steps to add your code and model checkpoint to the repository.
-   
-## How to calculate the number of parameters, FLOPs, and activations
+  
+### How to calculate the number of parameters, FLOPs, and activations
 
 ```python
     from utils.model_summary import get_model_flops, get_model_activation
@@ -50,7 +45,19 @@
     num_parameters = num_parameters / 10 ** 6
     print("{:>16s} : {:<.4f} [M]".format("#Params", num_parameters))
 ```
-## Acknowledgement
+### Acknowledgement
 This code is built on [HAT](https://github.com/XPixelGroup/HAT) codebase. We thank the authors for sharing the codes.
-## License
+
+### Team
+[Jungkeong Kil](https://github.com/kil-jung-keong),
+Eon Kim,
+[Taehyung Kim](https://github.com/kimtaehyeong),
+[Yeonseung Yu](https://github.com/yuyeonseung),
+[Beomyeol Lee](https://github.com/by2ee),
+[Subin Lee](https://github.com/Leebsun),
+[Seokjae Lim](https://github.com/SeokjaeLIM),
+[Somi Chae](https://github.com/csi714),
+[Heungjun Choi](https://github.com/hjvision96)
+
+### License
 This code repository is release under [MIT License](LICENSE). 
