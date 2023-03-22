@@ -9,7 +9,7 @@
 
 ### How to test the baseline model?
 
-1. `git clone https://github.com/kimtaehyeong/NTIRE2023_ImageSR_x4.git`
+1. `git clone https://github.com/kimtaehyeong/NTIRE2023_ImageSR_x4_LDCC.git`
 2. The models weights should download to ```model_zoo``` directory at [Google Drive](https://drive.google.com/file/d/1UqM1tU09TOFO-E_Y5lQpm5pjXmAdTGC-/view?usp=share_link)
 3. Select the model you would like to test from [`run.sh`](./run.sh)
     ```bash
