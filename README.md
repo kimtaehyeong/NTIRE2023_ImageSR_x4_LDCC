@@ -1,7 +1,7 @@
 # [NTIRE 2023 Challenge on Image Super-Resolution (x4)](https://cvlai.net/ntire/2023/) @ [CVPR 2023](https://cvpr2023.thecvf.com/)
 
 ## Latent Discriminative Cosine Criterion (LDCC) Overview
-<img src="https://github.com/kimtaehyeong/NTIRE2023_ImageSR_x4_LDCC/blob/main/figures/ldcc_method.PNG" width="600"/>
+<img src="https://github.com/kimtaehyeong/NTIRE2023_ImageSR_x4_LDCC/blob/main/figures/ldcc_method_2.PNG" width="600"/>
 
 ### Environment
 - [PyTorch >= 1.7](https://pytorch.org/) **(Recommend **NOT** using torch 1.8!!! It would cause abnormal performance. we used PyTorch version 1.12.)**
